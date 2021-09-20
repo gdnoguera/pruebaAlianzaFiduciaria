@@ -1,0 +1,62 @@
+<h3>Create Client</h3>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4" >
+    <div [hidden]="submitted" style="width: 400px;">
+      <form [formGroup]="clientsaveform" #saveclient (ngSubmit)="saveClient(saveClient)">
+          <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control"  formControlName="name" data-toggle="tooltip" 
+                 data-placement="right" title="Enter Client Name" >
+              <div class="alert alert-danger" *ngIf = "(ClientName.touched) && (ClientName.invalid)" 
+                style="margin-top: 5px;">
+                  <span *ngIf="ClientName.errors.required">Name is Required</span>
+                    <span *ngIf = "ClientName.errors.minlength"> 
+                        MinLength Error 
+                    </span>                   
+                </div>
+          </div>
+  
+          <div class="form-group">
+              <label for="name">Email</label>
+              <input type="text" class="form-control" formControlName="email" 
+                data-toggle="tooltip" data-placement="right" title="Enter Client Email">
+                <div class="alert alert-danger" *ngIf = "(ClientEmail.touched) && (ClientEmail.invalid)" 
+                style="margin-top: 5px;">
+                  <span *ngIf="ClientEmail.errors.required">Email is Required</span>
+                    <span *ngIf = "ClientEmail.errors.email"> 
+                        Invalid Email Format 
+                    </span>                   
+                </div>
+          </div>
+  
+          <div class="form-group">
+              <label for="branch">Branch</label>
+                <select class="form-control" formControlName="branch" data-toggle="tooltip" 
+                      data-placement="right" title="Select Client Branch">
+                    <option value="null">--Select Branch--</option>
+                  <option value="B-Tech">B-Tech</option>
+                  <option value="BCA">BCA</option>
+                  <option value="MCA">MCA</option>
+                  <option value="M-Tech">M-Tech</option>
+                </select>
+          </div>
+  
+          <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+  </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+      <div [hidden]="!submitted">
+         <h4>Client Added SuccessFully!</h4>
+         <button (click)="addClientForm()" class='btn btn-primary'>Add More Client</button>
+      </div>      
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+
